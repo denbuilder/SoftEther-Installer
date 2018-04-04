@@ -1,30 +1,31 @@
 #!/bin/bash
 
-latest="v4.22-9634-beta"
-lateststable="v4.20-9608-rtm-2016.04.17"
-#Release Date: 2015-10-19
-initfile="vpnserver2"
+#Check root access
+if [ "$EUID" -ne 0 ]
+  then echo "Run as root"
+  exit
+fi
 
-echo "--------------------------------------------------------------------"
-echo "SoftEther VPN Server Install script"
-echo "By AhmadShamli"
-echo "http://github.com/AhmadShamli"
-echo "http://AhmadShamli.com"
-echo "credit: DigitalOcean and StackOverflow"
-echo "https://www.digitalocean.com/community/tutorials/how-to-setup-a-multi-protocol-vpn-server-using-softether"
-echo "--------------------------------------------------------------------"
-echo "--------------------------------------------------------------------"
-echo
-echo "Select Architecture"
-echo
-echo " 1. Arm EABI (32bit)"
-echo " 2. Intel x86 (32bit)"
-echo " 3. Intel x64/AMD64 (64bit)"
-echo
-echo "Please choose architecture: "
-read tmp
-echo
+#Get architecture
+architecture=`getconf LONG_BIT`
+if [ "$architecture" -eq 64 ];
+then
+        arch="64bit_-_Intel_x64_or_AMD64"
+        arch2="x64-64bit"
+elif [ "$architecture" -eq 32 ];
+then
+        arch="32bit_-_Intel_x86"
+        arch2="x86-32bit"
+fi
 
+#File version
+version="v4.25-9656-rtm-2018.01.15" #Release Date: 2018-01-15
+file="softether-vpnserver-"$version"-linux-"$arch2".tar.gz"
+link="http://www.softether-download.com/files/softether/"$version"-tree/Linux/SoftEther_VPN_Server/"$arch"/"$file
+wget $link
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if test "$tmp" = "3"
 then
 	arch="64bit_-_Intel_x64_or_AMD64"
