@@ -6,6 +6,10 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+#Update & upgrade
+apt-get update && apt-get upgrade -y
+apt-get install build-essential -y
+
 #Get architecture
 architecture=`getconf LONG_BIT`
 if [ "$architecture" -eq 64 ];
@@ -21,5 +25,12 @@ fi
 #File version
 version="v4.25-9656-rtm-2018.01.15" #Release Date: 2018-01-15
 file="softether-vpnserver-"$version"-linux-"$arch2".tar.gz"
+
+#File download
 link="http://www.softether-download.com/files/softether/"$version"-tree/Linux/SoftEther_VPN_Server/"$arch"/"$file
 wget $link
+tar xzf "$file"
+
+#Enter file
+cd vpnserver
+exec bash

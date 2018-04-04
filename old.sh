@@ -115,7 +115,7 @@ if [ "$os" -eq "cent" ];then
 	yum upgrade
 	yum groupinstall "Development Tools" gcc
 else
-	apt-get update && apt-get upgrade
+	apt-get update && apt-get upgrade -y
 	apt-get install build-essential -y
 fi
 
