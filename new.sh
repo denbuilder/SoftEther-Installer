@@ -33,4 +33,4 @@ tar xzf "$file"
 
 #Enter file
 cd vpnserver
-exec bash
+make i_read_and_agree_the_license_agreement
