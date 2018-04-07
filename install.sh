@@ -9,7 +9,7 @@ fi
 #Update & upgrade
 apt-get update && apt-get upgrade -y
 apt-get install build-essential -y
-apt-get install lib32ncurses5-dev
+apt-get install lib32ncurses5-dev -y
 
 #Get architecture
 architecture=`getconf LONG_BIT`
