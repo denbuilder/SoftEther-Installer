@@ -30,7 +30,8 @@ file="softether-vpnserver-"$version"-linux-"$arch2".tar.gz"
 #File download
 link="http://www.softether-download.com/files/softether/"$version"-tree/Linux/SoftEther_VPN_Server/"$arch"/"$file
 wget $link
-tar xzf "$file"
+tar xzf $file
+rm $file
 
 #Enter file and installing
 cd vpnserver
