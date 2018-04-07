@@ -9,6 +9,7 @@ fi
 #Update & upgrade
 apt-get update && apt-get upgrade -y
 apt-get install build-essential -y
+apt-get install lib32ncurses5-dev
 
 #Get architecture
 architecture=`getconf LONG_BIT`
@@ -31,7 +32,7 @@ link="http://www.softether-download.com/files/softether/"$version"-tree/Linux/So
 wget $link
 tar xzf "$file"
 
-#Enter file and setting up
+#Enter file and installing
 cd vpnserver
 make i_read_and_agree_the_license_agreement
 cd ..
@@ -44,3 +45,6 @@ wget -O /etc/init.d/vpnserver https://raw.githubusercontent.com/denbuilder/softe
 mkdir /var/lock/subsys
 chmod 755 /etc/init.d/vpnserver && /etc/init.d/vpnserver start
 update-rc.d vpnserver defaults
+
+#Clear terminal to make look good
+clear
