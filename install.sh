@@ -48,4 +48,5 @@ chmod 755 /etc/init.d/vpnserver && /etc/init.d/vpnserver start
 update-rc.d vpnserver defaults
 
 #Clear terminal to make look good
+history -c
 clear
