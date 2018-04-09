@@ -5,6 +5,21 @@ if [ "$EUID" -ne 0 ]
   then echo "Run as root"
   exit
 fi
+LATESTVER="`wget -qO- https://raw.githubusercontent.com/denbuilder/softether_script/master/latver?token=AZkwkhPO1VhGK7gywLw3l9BXq43LNIw6ks5a0-mewA%3D%3D`"
+VER="0.1"
+
+if [ "$VER" = "$LATESTVER" ]
+then 
+  echo "Running Latest Script"
+else
+  echo "Not Running Latest Script"
+  echo -n "Update Script?"
+  read answer
+  if echo "$answer" | grep -iq "^y" ;then
+    echo update
+  else
+    echo ignore
+fi
 
 #Update & upgrade
 apt-get update && apt-get upgrade -y
