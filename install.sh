@@ -7,19 +7,23 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #Script Update
-LATESTVER="`wget -qO- https://pastebin.com/raw/j37mfrbk`"
-VER="0.1"
+LATESTVER="`wget -qO- https://pastebin.com/raw/paiYxYwH`"
+VER="1.0"
 if [ "$VER" = "$LATESTVER" ]
 then
   echo "Running Latest Script"
 else
   echo "Not Running Latest Script"
-  echo -n "Update Script?"
+  echo -n "Update Script? Yes(y) / No(n)"
   read answer
-  if ["$answer" | grep -iq "^y" ];then
-    echo update
+  if  echo "$answer" | `grep -iq "^y"`
+  then
+    rm -r install.sh
+    wget -O install.sh https://pastebin.com/raw/KWL7QE8q
+    chmod 777 install.sh
+    ./install.sh
   else
-    echo ignore
+    echo "Bye Bye!"
   fi
 fi
 
