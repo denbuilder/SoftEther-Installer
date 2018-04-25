@@ -7,8 +7,8 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #Script Update
-LATESTVER="`wget -qO- https://pastebin.com/raw/paiYxYwH`"
-VER="1.0"
+LATESTVER="`wget -qO- https://raw.githubusercontent.com/denbuilder/softether_script/master/latver`"
+VER="0.1"
 if [ "$VER" = "$LATESTVER" ]
 then
   echo "Running Latest Script"
@@ -19,7 +19,7 @@ else
   if  echo "$answer" | `grep -iq "^y"`
   then
     rm -r install.sh
-    wget -O install.sh https://pastebin.com/raw/KWL7QE8q
+    wget -O install.sh https://raw.githubusercontent.com/denbuilder/softether_script/master/install.sh
     chmod 777 install.sh
     ./install.sh
   else
