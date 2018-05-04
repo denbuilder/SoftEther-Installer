@@ -68,6 +68,7 @@ mkdir /var/lock/subsys
 chmod 755 /etc/init.d/vpnserver && /etc/init.d/vpnserver start
 update-rc.d vpnserver defaults
 
-#Clear terminal to make look good
+#Clear terminal to make look good & delete file
+rm ./install.sh
 history -c
 clear
