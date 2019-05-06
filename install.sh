@@ -45,7 +45,7 @@ then
 fi
 
 #File version
-version="v4.25-9656-rtm-2018.01.15" #Release Date: 2018-01-15
+version="v4.29-9680-rtm-2019.02.28" #Release Date: 2019-02-28
 file="softether-vpnserver-"$version"-linux-"$arch2".tar.gz"
 
 #File download
